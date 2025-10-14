@@ -23,6 +23,16 @@ public class UserService {
             () -> new UserNotFoundException("User id " + id + " not found"));
     }
 
+    public User getUserByEmail(String email) throws UserNotFoundException
+    {
+        if (userRepository.existsByEmail(email))
+        {
+            return userRepository.findByEmail(email);
+        }
+        
+        throw new UserNotFoundException("User email " + email + " does not exists!");
+    }
+
     public User updateUser(Long id, User user) {
         User existingUser = getUserById(id);
 
