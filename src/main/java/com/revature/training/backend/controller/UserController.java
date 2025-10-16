@@ -1,5 +1,7 @@
 package com.revature.training.backend.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -31,6 +33,11 @@ public class UserController {
         return userService.getUserById(id);
     }
 
+    @GetMapping("/users")
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
+    }
+
     @PatchMapping("/{id}")
     public User updateUser(@PathVariable Long id, @RequestBody User user) {
         return userService.updateUser(id, user);
@@ -42,8 +49,7 @@ public class UserController {
     }
 
     @GetMapping("/{email}")
-    public User getUserByEmail(@PathVariable String email)
-    {
+    public User getUserByEmail(@PathVariable String email) {
         return userService.getUserByEmail(email);
     }
 }

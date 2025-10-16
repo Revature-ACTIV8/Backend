@@ -9,4 +9,9 @@ public class GlobalExceptionHandler {
     public String handleUserNotFoundException(UserNotFoundException ex) {
         return ex.getMessage();
     }
+    
+    @ExceptionHandler(EmailAlreadyExistsException.class)
+    public String handleEmailAlreadyExistsException(EmailAlreadyExistsException ex) {
+        return ex.getMessage();
+    }
 }

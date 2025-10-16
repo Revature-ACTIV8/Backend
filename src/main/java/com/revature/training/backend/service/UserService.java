@@ -1,7 +1,10 @@
 package com.revature.training.backend.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
+import com.revature.training.backend.exception.EmailAlreadyExistsException;
 import com.revature.training.backend.exception.UserNotFoundException;
 import com.revature.training.backend.model.User;
 import com.revature.training.backend.repository.UserRepository;
@@ -15,7 +18,12 @@ public class UserService {
     }
     
     public User createUser(User user) {
-        return userRepository.save(user);
+        if (userRepository.existsByEmail(user.getEmail())) {
+            throw new EmailAlreadyExistsException("Email " + user.getEmail() + " already exists!");
+        }
+        else {
+            return userRepository.save(user);
+        }
     }
 
     public User getUserById(Long id) {
@@ -23,14 +31,17 @@ public class UserService {
             () -> new UserNotFoundException("User id " + id + " not found"));
     }
 
-    public User getUserByEmail(String email) throws UserNotFoundException
-    {
+    public User getUserByEmail(String email) {
         if (userRepository.existsByEmail(email))
         {
             return userRepository.findByEmail(email);
         }
         
         throw new UserNotFoundException("User email " + email + " does not exists!");
+    }
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 
     public User updateUser(Long id, User user) {
