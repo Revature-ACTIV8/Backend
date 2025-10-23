@@ -1,4 +1,4 @@
-package com.revature.training.backend.service;
+package com.revature.training.backend.user.service;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 
 import com.revature.training.backend.exception.EmailAlreadyExistsException;
 import com.revature.training.backend.exception.UserNotFoundException;
-import com.revature.training.backend.model.User;
-import com.revature.training.backend.repository.UserRepository;
+import com.revature.training.backend.user.model.User;
+import com.revature.training.backend.user.repository.UserRepository;
 
 @Service
 public class UserService {

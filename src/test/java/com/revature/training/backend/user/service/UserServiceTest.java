@@ -1,4 +1,4 @@
-package com.revature.training.backend.service;
+package com.revature.training.backend.user.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
@@ -15,8 +15,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.revature.training.backend.exception.EmailAlreadyExistsException;
-import com.revature.training.backend.model.User;
-import com.revature.training.backend.repository.UserRepository;
+import com.revature.training.backend.user.model.User;
+import com.revature.training.backend.user.repository.UserRepository;
 
 @ExtendWith(MockitoExtension.class)
 public class UserServiceTest {

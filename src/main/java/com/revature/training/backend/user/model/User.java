@@ -1,4 +1,4 @@
-package com.revature.training.backend.model;
+package com.revature.training.backend.user.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

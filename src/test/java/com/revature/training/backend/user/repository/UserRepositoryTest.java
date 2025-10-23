@@ -1,4 +1,4 @@
-package com.revature.training.backend.repository;
+package com.revature.training.backend.user.repository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import com.revature.training.backend.exception.UserNotFoundException;
-import com.revature.training.backend.model.User;
+import com.revature.training.backend.user.model.User;
 
 @DataJpaTest
 public class UserRepositoryTest {

@@ -1,4 +1,4 @@
-package com.revature.training.backend.controller;
+package com.revature.training.backend.user.controller;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.training.backend.model.User;
-import com.revature.training.backend.service.UserService;
+import com.revature.training.backend.user.model.User;
+import com.revature.training.backend.user.service.UserService;
 
 @RestController
 @RequestMapping("/user")
