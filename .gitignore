@@ -10,6 +10,9 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+# DB secrets
+db-secrets.properties
+
 # Package Files #
 *.jar
 *.war
