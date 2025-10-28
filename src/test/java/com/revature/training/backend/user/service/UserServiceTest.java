@@ -14,7 +14,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.revature.training.backend.exception.EmailAlreadyExistsException;
+import com.revature.training.backend.common.exception.EmailAlreadyExistsException;
 import com.revature.training.backend.user.model.User;
 import com.revature.training.backend.user.repository.UserRepository;
 

@@ -1,4 +1,4 @@
-package com.revature.training.backend.exception;
+package com.revature.training.backend.common.exception;
 
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

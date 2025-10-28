@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import com.revature.training.backend.exception.UserNotFoundException;
+import com.revature.training.backend.common.exception.UserNotFoundException;
 import com.revature.training.backend.user.model.User;
 
 @DataJpaTest

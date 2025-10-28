@@ -1,4 +1,4 @@
-package com.revature.training.backend.exception;
+package com.revature.training.backend.common.exception;
 
 
 public class UserNotFoundException extends RuntimeException {
