@@ -2,6 +2,7 @@ package com.revature.training.backend.user.controller;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -16,6 +17,7 @@ import com.revature.training.backend.user.service.UserService;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin(origins = "http://localhost:5173")
 public class UserController {
     private UserService userService;
 
@@ -48,8 +50,9 @@ public class UserController {
         userService.deleteUser(id);
     }
 
-    @GetMapping("/{email}")
+    @GetMapping("/email/{email}")
     public User getUserByEmail(@PathVariable String email) {
         return userService.getUserByEmail(email);
     }
+
 }

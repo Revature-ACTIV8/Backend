@@ -103,7 +103,7 @@ public class UserServiceTest {
 
         User updatedUser = userService.updateUser(userId, userUpdate);
 
-        assertEquals(updatedUser.getUserName(), "alpha");
+        assertEquals(updatedUser.getUsername(), "alpha");
         assertEquals(updatedUser.getEmail(), "alpha@mail.com");
         assertNotEquals(updatedUser.getPassword(), "password1");
         assertEquals(updatedUser.getPassword(), "1234pass");

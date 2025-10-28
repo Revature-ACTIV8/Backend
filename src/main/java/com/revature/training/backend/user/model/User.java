@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "users")
 public class User {
     public User(String userName, String email, String password) {
-        this.userName = userName;
+        this.username = userName;
         this.email = email;
         this.password = password;
     }
@@ -31,7 +31,8 @@ public class User {
 
     @NotBlank(message = "Username is mandatory")
     @Size(min = 3, message = "Username must be at least 3 characters long")
-    private String userName;
+    @Column(name = "user_name")
+    private String username;
 
     @Column(unique = true)
     @NotBlank(message = "Email is mandatory")
