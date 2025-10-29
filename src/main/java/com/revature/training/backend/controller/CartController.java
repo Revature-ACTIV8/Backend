@@ -12,8 +12,8 @@ import java.util.List;
 
 @RestController
 //Start here for requests
-@RequestMapping("/api/carts")
-@CrossOrigin(origins = "*")
+@RequestMapping("/carts")
+@CrossOrigin(origins = "http://localhost:5173")
 public class CartController {
 
     @Autowired
