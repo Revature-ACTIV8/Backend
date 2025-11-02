@@ -25,6 +25,20 @@ public class OrderController {
         return new ResponseEntity<>(createdOrder, HttpStatus.CREATED);
     }
 
+    @PostMapping("/createEmpty/{customerId}")
+    public ResponseEntity<Order> createEmptyOrder(@PathVariable Long customerId) {
+        Order order = new Order();
+        order.setCustomerId(customerId);
+        order.setOrderStatus("PENDING");
+        order.setOrderDate(java.time.LocalDateTime.now());
+        order.setOrderAmount(java.math.BigDecimal.ZERO);
+        order.setShippingAddress("Not Provided");
+        order.setOrderEmail("Not Provided");
+
+        Order createdOrder = orderService.createOrder(order);
+        return new ResponseEntity<>(createdOrder, HttpStatus.CREATED);
+    }
+
     @GetMapping("/{orderId}")
     public ResponseEntity<Order> getOrderById(@PathVariable Long orderId) {
         return orderService.getOrderById(orderId)

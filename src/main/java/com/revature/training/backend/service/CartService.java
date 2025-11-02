@@ -29,8 +29,8 @@ public class CartService {
         return cartRepository.findById(orderId);
     }
 
-    public Optional<Cart> getCartByCustomerId(Long customerId) {
-        return cartRepository.findByCustomerId(customerId);
+    public Cart getCartByCustomerId(Long customerId) {
+        return cartRepository.findByCustomerId(customerId).orElse(null);
     }
 
     public List<Cart> getAllCarts() {

@@ -34,9 +34,11 @@ public class CartController {
 
     @GetMapping("/customer/{customerId}")
     public ResponseEntity<Cart> getCartByCustomerId(@PathVariable Long customerId) {
-        return cartService.getCartByCustomerId(customerId)
-                .map(cart -> new ResponseEntity<>(cart, HttpStatus.OK))
-                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        Cart cart = cartService.getCartByCustomerId(customerId);
+        if (cart == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(cart);
     }
 
     @GetMapping
