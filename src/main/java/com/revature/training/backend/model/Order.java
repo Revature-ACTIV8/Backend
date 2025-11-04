@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 //name of the table in the database
 @Table(name = "orders")
@@ -42,7 +44,10 @@ public class Order {
     private String orderStatus;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    // below is needed so Order doesnt call OrderItems infinitely
+    @JsonManagedReference
     private List<OrderItem> orderItems = new ArrayList<>();
+
 
     public void addOrderItem(OrderItem item) {
         orderItems.add(item);
