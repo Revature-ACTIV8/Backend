@@ -5,7 +5,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.revature.training.backend.common.exception.EmailAlreadyExistsException;
+import com.revature.training.backend.common.exception.InvalidPasswordException;
+import com.revature.training.backend.common.exception.PasswordMismatchException;
 import com.revature.training.backend.common.exception.UserNotFoundException;
+import com.revature.training.backend.user.DTO.PasswordUpdateRequest;
 import com.revature.training.backend.user.model.User;
 import com.revature.training.backend.user.repository.UserRepository;
 
@@ -44,14 +47,31 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User updateUser(Long id, User user) {
-        User existingUser = getUserById(id);
+    public User updateUser(User user) {
+        User existingUser = getUserByEmail(user.getEmail());
 
         existingUser.setUsername(user.getUsername());
         existingUser.setEmail(user.getEmail());
         existingUser.setPassword(user.getPassword());
 
         return userRepository.save(existingUser);
+    }
+
+    public void updatePassword(PasswordUpdateRequest request) {
+        User currentUser = request.getUser();
+        User existingUser = getUserByEmail(currentUser.getEmail());
+
+        if (!request.getCurrentPassword().equals(existingUser.getPassword())) {
+            throw new InvalidPasswordException("Current password is incorrect!");
+        }
+
+        if (!request.getNewPassword().equals(request.getConfirmPassword())) {
+            throw new PasswordMismatchException("New passwords do not match!");
+        }
+
+        existingUser.setPassword(request.getNewPassword());
+
+        userRepository.save(existingUser);
     }
 
     public void deleteUser(Long id) {

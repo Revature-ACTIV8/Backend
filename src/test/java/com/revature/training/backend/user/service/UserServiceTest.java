@@ -1,6 +1,7 @@
 package com.revature.training.backend.user.service;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -94,21 +95,22 @@ public class UserServiceTest {
 
     @Test
     public void testUpdateUser_UserUpdatedPassword() {
-        Long userId = 1L;
         User user = new User("alpha", "alpha@mail.com", "password1");
         User userUpdate = new User("alpha", "alpha@mail.com", "1234pass");
 
-        when(userRepository.findById(userId)).thenReturn(Optional.of(user));
-        when(userRepository.save(userUpdate)).thenReturn(userUpdate);
+        when(userRepository.existsByEmail(user.getEmail())).thenReturn(true);
+        when(userRepository.findByEmail(user.getEmail())).thenReturn(user);
+        when(userRepository.save(any(User.class))).thenReturn(userUpdate);
 
-        User updatedUser = userService.updateUser(userId, userUpdate);
+        User updatedUser = userService.updateUser(userUpdate);
 
         assertEquals(updatedUser.getUsername(), "alpha");
         assertEquals(updatedUser.getEmail(), "alpha@mail.com");
         assertNotEquals(updatedUser.getPassword(), "password1");
         assertEquals(updatedUser.getPassword(), "1234pass");
-        verify(userRepository).findById(userId);
-        verify(userRepository).save(userUpdate);
+        verify(userRepository).existsByEmail("alpha@mail.com");
+        verify(userRepository).findByEmail("alpha@mail.com");
+        verify(userRepository).save(any(User.class));
     }
 
     @Test

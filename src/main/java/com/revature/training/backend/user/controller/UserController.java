@@ -2,6 +2,8 @@ package com.revature.training.backend.user.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.training.backend.user.DTO.PasswordUpdateRequest;
 import com.revature.training.backend.user.model.User;
 import com.revature.training.backend.user.service.UserService;
 
@@ -25,9 +28,15 @@ public class UserController {
         this.userService = userService;
     }
 
+    // @PostMapping
+    // public User creatUser(@RequestBody User user) {
+    //     return userService.createUser(user);
+    // }
+
     @PostMapping
-    public User creatUser(@RequestBody User user) {
-        return userService.createUser(user);
+    public ResponseEntity<User> creatUser(@RequestBody User user) {
+        User newUser = userService.createUser(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
     }
 
     @GetMapping("/{id}")
@@ -40,9 +49,15 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @PatchMapping("/{id}")
-    public User updateUser(@PathVariable Long id, @RequestBody User user) {
-        return userService.updateUser(id, user);
+    @PatchMapping
+    public User updateUser(@RequestBody User user) {
+        return userService.updateUser(user);
+    }
+
+    @PatchMapping("/password")
+    public ResponseEntity<String> updatePassword(@RequestBody PasswordUpdateRequest request) {
+        userService.updatePassword(request);
+        return ResponseEntity.ok("Password Updated");
     }
 
     @DeleteMapping("/{id}")
@@ -54,5 +69,4 @@ public class UserController {
     public User getUserByEmail(@PathVariable String email) {
         return userService.getUserByEmail(email);
     }
-
 }
