@@ -95,21 +95,20 @@ public class UserServiceTest {
 
     @Test
     public void testUpdateUser_UserUpdatedPassword() {
-        User user = new User("alpha", "alpha@mail.com", "password1");
-        User userUpdate = new User("alpha", "alpha@mail.com", "1234pass");
+        Long id = 1L;
+        User user = new User(id, "alpha", "alpha@mail.com", "password1");
+        User userUpdate = new User(id, "alpha", "alpha@mail.com", "1234pass");
 
-        when(userRepository.existsByEmail(user.getEmail())).thenReturn(true);
-        when(userRepository.findByEmail(user.getEmail())).thenReturn(user);
+        when(userRepository.findById(id)).thenReturn(Optional.of(user));
         when(userRepository.save(any(User.class))).thenReturn(userUpdate);
 
-        User updatedUser = userService.updateUser(userUpdate);
+        User updatedUser = userService.updateUser(id, userUpdate);
 
         assertEquals(updatedUser.getUsername(), "alpha");
         assertEquals(updatedUser.getEmail(), "alpha@mail.com");
         assertNotEquals(updatedUser.getPassword(), "password1");
         assertEquals(updatedUser.getPassword(), "1234pass");
-        verify(userRepository).existsByEmail("alpha@mail.com");
-        verify(userRepository).findByEmail("alpha@mail.com");
+        verify(userRepository).findById(id);
         verify(userRepository).save(any(User.class));
     }
 

@@ -47,8 +47,8 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User updateUser(User user) {
-        User existingUser = getUserByEmail(user.getEmail());
+    public User updateUser(Long id, User user) {
+        User existingUser = getUserById(id);
 
         existingUser.setUsername(user.getUsername());
         existingUser.setEmail(user.getEmail());
