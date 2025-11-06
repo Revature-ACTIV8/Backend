@@ -1,0 +1,65 @@
+[33mcommit 0eb0524ae024e7eb2b07d68d4555dd0d27a39334[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32muser-auth[m[33m)[m
+Author: Faulty <33701523+IAmFaulty@users.noreply.github.com>
+Date:   Tue Oct 28 00:47:52 2025 -0400
+
+    Add application.properties, corrected controller to interface with db
+
+[33mcommit c5dd98279667e9931db1670eefc68b2662e970a4[m
+Author: Faulty <33701523+IAmFaulty@users.noreply.github.com>
+Date:   Mon Oct 27 23:03:28 2025 -0400
+
+    Corrected new java package extensions
+
+[33mcommit c62ffb34607be9e3e68a29496876f2695f2337d1[m[33m ([m[1;31morigin/user-auth[m[33m)[m
+Author: Christopher Yang <chryang01@gmail.com>
+Date:   Thu Oct 23 13:25:56 2025 -0500
+
+    Change project structure
+
+[33mcommit 6441733f30e55162308afb2108a02e37e4555ba3[m
+Author: Christopher Yang <chryang01@gmail.com>
+Date:   Thu Oct 16 14:40:54 2025 -0500
+
+    Create test cases for UserService
+
+[33mcommit 78d8e4c7246c2945ec4337bb30fbc4040656bdea[m
+Author: Christopher Yang <chryang01@gmail.com>
+Date:   Wed Oct 15 13:46:49 2025 -0500
+
+    Create test cases for UserRepository
+
+[33mcommit 5a850ca45b239c4a5c1b665d0fc2262cf51f0d6d[m
+Author: Christopher Yang <chryang01@gmail.com>
+Date:   Tue Oct 14 16:13:49 2025 -0500
+
+    Implement getting User by email
+
+[33mcommit 1833f50d31034618a27b42e449f5f5da16b27e68[m
+Author: Christopher Yang <chryang01@gmail.com>
+Date:   Tue Oct 14 14:46:48 2025 -0500
+
+    Create the GlobalExceptionHandler class
+
+[33mcommit 8e326083e5824dde446e2b9f476b8aeca16c1dc7[m
+Author: Christopher Yang <chryang01@gmail.com>
+Date:   Tue Oct 14 14:35:06 2025 -0500
+
+    Implement basic CRUD functionality for User
+
+[33mcommit 3e9bf545830f6cdb0b5ecdd259642619d0efb74a[m
+Author: Alhasan Mohsen <33701523+IAmFaulty@users.noreply.github.com>
+Date:   Mon Oct 13 13:17:57 2025 -0400
+
+    Add starter files for backend
+
+[33mcommit 74bc6cc0c10ae4995e0358bae51343611104d306[m
+Author: Alhasan Mohsen <33701523+IAmFaulty@users.noreply.github.com>
+Date:   Wed Oct 8 16:51:24 2025 -0400
+
+    Added user stories doc
+
+[33mcommit 42a34835319487b53d4b20c7541e9dfb45276cf8[m
+Author: Alhasan Mohsen <33701523+IAmFaulty@users.noreply.github.com>
+Date:   Wed Oct 8 16:22:30 2025 -0400
+
+    Initial commit
