@@ -12,8 +12,8 @@ import java.util.List;
 
 @RestController
 //Start here for requests
-@RequestMapping("/api/carts")
-@CrossOrigin(origins = "*")
+@RequestMapping("/carts")
+@CrossOrigin(origins = "http://localhost:5173")
 public class CartController {
 
     @Autowired
@@ -34,9 +34,11 @@ public class CartController {
 
     @GetMapping("/customer/{customerId}")
     public ResponseEntity<Cart> getCartByCustomerId(@PathVariable Long customerId) {
-        return cartService.getCartByCustomerId(customerId)
-                .map(cart -> new ResponseEntity<>(cart, HttpStatus.OK))
-                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        Cart cart = cartService.getCartByCustomerId(customerId);
+        if (cart == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(cart);
     }
 
     @GetMapping

@@ -12,8 +12,8 @@ import java.util.List;
 
 @RestController
 //Start here for requests
-@RequestMapping("/api/orders")
-@CrossOrigin(origins = "*")
+@RequestMapping("/orders")
+@CrossOrigin(origins = "http://localhost:5173")
 public class OrderController {
 
     @Autowired
@@ -21,6 +21,20 @@ public class OrderController {
 
     @PostMapping
     public ResponseEntity<Order> createOrder(@RequestBody Order order) {
+        Order createdOrder = orderService.createOrder(order);
+        return new ResponseEntity<>(createdOrder, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/createEmpty/{customerId}")
+    public ResponseEntity<Order> createEmptyOrder(@PathVariable Long customerId) {
+        Order order = new Order();
+        order.setCustomerId(customerId);
+        order.setOrderStatus("PENDING");
+        order.setOrderDate(java.time.LocalDateTime.now());
+        order.setOrderAmount(java.math.BigDecimal.ZERO);
+        order.setShippingAddress("Not Provided");
+        order.setOrderEmail("Not Provided");
+
         Order createdOrder = orderService.createOrder(order);
         return new ResponseEntity<>(createdOrder, HttpStatus.CREATED);
     }
